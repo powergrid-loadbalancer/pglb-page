@@ -1,0 +1,17 @@
+@import '../../../components/app/theme';
+
+.tableTable {
+  display: table;
+  height: 80vh;
+  margin-left: 200px;
+}
+
+.table {
+  display: table-cell;
+  vertical-align: middle;
+  width: 300px;
+}
+
+.table > div {
+  border: 2px dashed $primary-color;
+}
