@@ -3,6 +3,9 @@
 @import './components/main/main';
 @import './components/main/chart/chart';
 @import './components/main/table/table';
+@import './components/main/table/entry/tableEntry';
+@import './components/main/start/startButton';
+
 
 body {
   margin: 0;
@@ -37,3 +40,4 @@ pre {
   -ms-user-select: none;
   user-select: none;
 }
+

@@ -1,6 +1,7 @@
 import React from 'react'
 import Chart from "./chart/Chart"
 import Table from "./table/TableElement"
+import StartButton from "./start/StartButton"
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ export default class Home extends React.Component {
                         <Table/>
                     </div>
                 </div>
+                <StartButton/>
             </div>
         )
     }
