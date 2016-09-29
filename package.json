@@ -1,46 +1,20 @@
 {
-  "name": "exemplator-page",
+  "name": "pglb-page",
   "version": "1.0.0",
-  "description": "Find java code examples from GitHub to learn how to use APIs.",
+  "description": "",
   "main": "index.html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/exemplator/exemplator-page"
   },
-  "keywords": [
-    "java",
-    "coding",
-    "assistant",
-    "example",
-    "finder",
-    "tool",
-    "code",
-    "snippet",
-    "sample",
-    "type",
-    "atom",
-    "plugin"
-  ],
-  "tags": [
-    "java",
-    "coding",
-    "assistant",
-    "example",
-    "finder",
-    "tool",
-    "code",
-    "snippet",
-    "sample",
-    "type",
-    "atom",
-    "plugin"
-  ],
-  "author": "exemplator",
+  "keywords": [],
+  "tags": [],
+  "author": "powergrid-loadbalancer",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/exemplator/exemplator-page/issues"
+    "url": "https://github.com/powergrid-loadbalancer/pglb-page/issues"
   },
-  "homepage": "https://exemplator.xyz",
+  "homepage": "",
   "engines": {
     "npm": ">=3.0.0",
     "node": ">=5.0.0"
