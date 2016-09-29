@@ -6,10 +6,6 @@
   background-color: $background-color-body;
 }
 
-.main-hero {
-  background-color: $background-color-hero;
-}
-
 .main-body {
   padding-top: 2%;
 }
@@ -20,27 +16,5 @@
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  font-size: 3em;
-  color: white;
-}
-
-.main-subtitle {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-  font-size: 1.2em;
-  color: white;
-}
-
-.main-body-intro-message {
-  display: table-cell;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: -2%;
-  text-align: center;
-  font-size: 1.5em;
-  height: 80vh;
-  font-family: Code-Font, sans-serif;
-  color: $background-color-hero;
+  font-size: 2.3em;
 }
