@@ -29,7 +29,7 @@ export default class TableEntry extends React.Component {
             }
         } else {
             style = {
-                color: "green"
+                color: "#2E7D32"
             }
         }
 
