@@ -1,4 +1,5 @@
 import React from 'react'
+import GraphStore from "../../../stores/graphStore"
 var LineChart = require("react-chartjs").Line;
 var Immutable = require('immutable');
 
@@ -12,9 +13,15 @@ export default class Chart extends React.Component {
     }
 
     componentDidMount() {
+        GraphStore.addChangeListener(this._updateGraph.bind(this))
     }
 
     componentWillUnmount() {
+        GraphStore.removeChangeListener(this._updateGraph.bind(this))
+    }
+
+    _updateGraph = () => {
+
     }
 
     render () {

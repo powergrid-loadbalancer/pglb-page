@@ -1,3 +1,3 @@
 export default {
-    UPDATE: "UPDATE",
+    ADD_POINT: "ADD_POINT",
 }

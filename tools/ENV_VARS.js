@@ -2,7 +2,8 @@ var ENV_VARS
 
 let CONSTANTS = {
     CONSUMER: "CONSUMER",
-    PRODUCER: "PRODUCER"
+    PRODUCER: "PRODUCER",
+    MAX_SIZE: 10
 }
 
 if (process.env.NODE_ENV !== "production") {
