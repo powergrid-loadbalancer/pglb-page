@@ -9,12 +9,12 @@ let CONSTANTS = {
 if (process.env.NODE_ENV !== "production") {
     ENV_VARS = {
         CONSTANTS: CONSTANTS,
-        SERVER_URL: "http://localhost:4567"
+        SERVER_URL: "http://localhost:9000"
     }
 } else {
     ENV_VARS = {
         CONSTANTS: CONSTANTS,
-        SERVER_URL: "http://104.131.79.185:4567"
+        SERVER_URL: "http://localhost:9000"
     }
 }
 

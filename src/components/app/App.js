@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 import React, { PropTypes } from 'react'
 import MuiTheme from "../app/MuiTheme"
 import Footer from "./footer/Footer"
