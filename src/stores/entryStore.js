@@ -30,6 +30,7 @@ var EntryStore = assign({}, BaseStore, {
         return _entries
     },
     updateEntryState(index, checked, value) {
+        console.log(index, checked, value)
         _entryState[index] = {
           checked: checked,
           value: value

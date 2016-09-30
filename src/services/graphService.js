@@ -7,7 +7,9 @@ export var updateGraph = function() {
     let consumersNoBuying = 0.0
     EntryStore.getEntries().forEach(entry => {
         if (entry.type === ENV_VARS.CONSTANTS.CONSUMER) {
-            consumersNoBuying += entry.normalValue
+            var result = entry.normalValue + consumersNoBuying;
+            consumersNoBuying = result
+            //console.log("notbuying: i am adding: " + entry.normalValue + " to " + consumersNoBuying + " = " + result)
         } else {
             produced += entry.normalValue
         }
@@ -17,8 +19,11 @@ export var updateGraph = function() {
     let counter = 0
     EntryStore.getEntryStates().forEach(state => {
         if (counter < ENV_VARS.CONSTANTS.MAX_SIZE - 1) {
-            consumersWithBuying += state.value
+            var result = state.value + consumersWithBuying;
+            consumersWithBuying = result
+            //console.log("buying: i am adding: " + state.value + " to " + consumersWithBuying + " = " + result)
         }
+        counter++
     })
 
     console.log(produced, consumersNoBuying, consumersWithBuying)
