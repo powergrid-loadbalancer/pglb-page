@@ -1,13 +1,14 @@
 import { setEntries } from "../actions/entryAction"
 import EntriesStore from "../stores/entryStore"
+import ENV_VARS from "../../tools/ENV_VARS"
 
 export function fetchEntries () {
     let entries = []
     let entryStates = EntriesStore.getEntryStates()
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < ENV_VARS.CONSTANTS.MAX_SIZE; i++) {
         let checked = false
 
-        if (entryStates.length >= 5) {
+        if (entryStates.length >= ENV_VARS.CONSTANTS.MAX_SIZE) {
             checked = entryStates[i].checked
         }
 
@@ -15,8 +16,8 @@ export function fetchEntries () {
         let entry = {
             type: "PRODUCER",
             meterId: j,
-            normalValue: "5000",
-            buyingValue: "2500",
+            normalValue: 500,
+            buyingValue: 250,
             checked: checked
         }
 

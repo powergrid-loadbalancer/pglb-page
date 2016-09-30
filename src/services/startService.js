@@ -3,14 +3,20 @@ import { updateGraph } from "./graphService"
 
 export function start() {
     fetchEntries()
-    updateGraph()
-    _startCallback()
+    _graphCallback()
+    _fetchCallback()
 }
 
-let _startCallback = () => {
+let _fetchCallback = () => {
     setTimeout(() => {
         fetchEntries()
-        updateGraph()
-        _startCallback()
+        _fetchCallback()
     }, 3000)
+}
+
+let _graphCallback = () => {
+    setTimeout(() => {
+        updateGraph()
+        _graphCallback()
+    }, 1500)
 }

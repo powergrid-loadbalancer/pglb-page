@@ -1,9 +1,20 @@
 import { addDataPointAction } from "../actions/graphAction"
+import EntryStore from "../stores/entryStore"
+import ENV_VARS from "../../tools/ENV_VARS"
 
 export var updateGraph = function() {
-    let j = Math.random() * 10
-    let k = Math.random() * 10
-    let l = Math.random() * 10
+    let produced = 0
+    let consumersNoBuying = 0
+    EntryStore.getEntries().forEach(entry => {
+        if (entry.type === ENV_VARS.CONSTANTS.CONSUMER) {
+            consumersNoBuying += entry.normalValue
+        } else {
+            produced += entry.normalValue
+        }
+    })
 
-    addDataPointAction("d", j, k, l)
+    let consumersWithBuying = 0
+    let entryState = EntryStore.getEntryStates().forEach(state => consumersWithBuying += state.value)
+
+    addDataPointAction("d", produced, consumersNoBuying, entryState)
 }
