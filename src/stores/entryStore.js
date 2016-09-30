@@ -7,8 +7,8 @@ import assign from 'object-assign'
 var _entries = []
 
 var EntryStore = assign({}, BaseStore, {
-    addEntry(entry) {
-        _entries.push(entry)
+    setEntries(entries) {
+        _entries = entries
     },
     getEntries() {
         return _entries
@@ -18,7 +18,7 @@ var EntryStore = assign({}, BaseStore, {
 AppDispatcher.register(function(action) {
     switch(action.actionType) {
         case EntryConstants.ADD_ENTRY:
-            EntryStore.addEntry(action.entry)
+            EntryStore.setEntries(action.entries)
             EntryStore.emitChange()
             break
         case EntryConstants.TOGGLE_ENTRY:
