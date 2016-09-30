@@ -72,7 +72,7 @@ export default class TableElement extends React.Component {
                             enableSelectAll={false}
                         >
                             <TableRow>
-                                <TableHeaderColumn>Meter ID</TableHeaderColumn>
+                                <TableHeaderColumn>Meter Batch</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody
