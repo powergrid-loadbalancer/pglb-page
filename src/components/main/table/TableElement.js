@@ -7,6 +7,7 @@ const Immutable = require('immutable')
 export default class TableElement extends React.Component {
     constructor(props) {
         super(props)
+
         this.state = {
             entries: []
         }
@@ -66,9 +67,9 @@ export default class TableElement extends React.Component {
                         onCellClick={this._handleCellClick}
                     >
                         <TableHeader
-                            displaySelectAll={true}
+                            displaySelectAll={false}
                             adjustForCheckbox={true}
-                            enableSelectAll={true}
+                            enableSelectAll={false}
                         >
                             <TableRow>
                                 <TableHeaderColumn>Meter ID</TableHeaderColumn>
