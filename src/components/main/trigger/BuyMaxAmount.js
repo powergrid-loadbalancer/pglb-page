@@ -1,12 +1,34 @@
 import React from 'react'
+import fetch from 'isomorphic-fetch'
 import TextField from 'material-ui/TextField'
+import ENV_VARS from "../../../../tools/ENV_VARS"
 
 export default class BuyTrigger extends React.Component {
     constructor(props) {
         super(props)
 
+        fetch(ENV_VARS.SERVER_URL + "/capacity", {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                response.json().then(jsonArray => {
+                    this.state = {
+                        maxBuyText: jsonArray
+                    }
+                })
+            } else {
+                response.json().then(jsonArray => {
+                    console.log("Error: " + jsonArray)
+                })
+            }
+        })
+
         this.state = {
-            triggerText: ""
+            maxBuyText: ""
         }
     }
 
@@ -16,15 +38,32 @@ export default class BuyTrigger extends React.Component {
     componentWillUnmount() {
     }
 
-    _handleTriggerTextFieldChange = e => {
+    _handleMaxBuyTextFieldChange = e => {
         this.setState({
-            triggerText: e.target.value
+            maxBuyText: e.target.value
         })
     }
 
     _handleKeyPress = e => {
         if(e.key === 'Enter') {
-            console.log("Entered: " + this.state.triggerText)
+            fetch(ENV_VARS.SERVER_URL + "/head", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(this.state.maxBuyText)
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    response.json().then(jsonArray => {
+
+                    })
+                } else {
+                    response.json().then(jsonArray => {
+                        console.log("Error: " + jsonArray)
+                    })
+                }
+            })
         }
     }
 
@@ -32,7 +71,7 @@ export default class BuyTrigger extends React.Component {
         return (
             <div className="max-value-div">
                 <TextField type="text"
-                           value={this.state.triggerText}
+                           value={this.state.maxBuyText}
                            inputStyle={{
                                textAlign: "center",
                                fontFamily: "Code-Font",
@@ -47,7 +86,7 @@ export default class BuyTrigger extends React.Component {
                                color: "#C62828"
                            }}
                            style={{marginLeft: "3%", marginRight: "3%", width: "250px"}}
-                           onChange={this._handleTriggerTextFieldChange.bind(this)}
+                           onChange={this._handleMaxBuyTextFieldChange.bind(this)}
                            id="triggerInputText"
                            onKeyPress={this._handleKeyPress.bind(this)}
                            placeholder="" />
