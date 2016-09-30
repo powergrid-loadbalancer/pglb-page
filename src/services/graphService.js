@@ -1,9 +1,9 @@
-import { addDataPoint } from "../actions/graphAction"
+import { addDataPointAction } from "../actions/graphAction"
 
 export var updateGraph = function() {
-    let dataPoint = {
+    let j = Math.random() * 10
+    let k = Math.random() * 10
+    let l = Math.random() * 10
 
-    }
-
-    addDataPoint(dataPoint)
+    addDataPointAction("d", j, k, l)
 }

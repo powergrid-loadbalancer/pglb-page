@@ -2,15 +2,11 @@ import React from 'react'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
 import TableEntry from "./entry/TableEntry"
 import EntryStore from "../../../stores/entryStore"
-import { updateGraph } from "../../../services/graphService"
 const Immutable = require('immutable')
 
 export default class TableElement extends React.Component {
     constructor(props) {
         super(props)
-
-        this.entryId = 0
-
         this.state = {
             entries: []
         }
@@ -56,10 +52,7 @@ export default class TableElement extends React.Component {
         }
 
         EntryStore.updateEntryState(rowNumber, !entryState, value)
-
-        updateGraph()
     }
-
 
     render () {
         return (

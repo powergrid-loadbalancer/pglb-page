@@ -5,24 +5,58 @@ import assign from 'object-assign'
 import ENV_VARS from "../../tools/ENV_VARS"
 
 // Current settings
-let _dataPoints = []
+let _labels = []
+let _produced = []
+let _consumedNoBuying = []
+let _consumedWithBuying = []
 
 var GraphStore = assign({}, BaseStore, {
-    addDataPoint(dataPoint) {
-        _dataPoints.push(dataPoint)
-        if (_dataPoints.length > ENV_VARS.CONSTANTS.MAX_SIZE) {
-            _dataPoints.pop()
+    addLabel(label) {
+        _labels.push(label)
+        if (_labels.length > ENV_VARS.CONSTANTS.MAX_SIZE) {
+            _labels.shift()
         }
     },
-    getDataPoints() {
-        return _dataPoints
+    getLabel() {
+        return _labels
+    },
+    addProducedDataPoint(dataPoint) {
+        _produced.push(dataPoint)
+        if (_produced.length > ENV_VARS.CONSTANTS.MAX_SIZE) {
+            _produced.shift()
+        }
+    },
+    getProducedDataPoint() {
+        return _produced
+    },
+    addConsumedNoBuyingDataPoint(dataPoint) {
+        _consumedNoBuying.push(dataPoint)
+        if (_consumedNoBuying.length > ENV_VARS.CONSTANTS.MAX_SIZE) {
+            _consumedNoBuying.shift()
+        }
+    },
+    getConsumedNoBuyingDataPoint() {
+        return _consumedNoBuying
+    },
+    addConsumedWithBuyingDataPoint(dataPoint) {
+        _consumedWithBuying.push(dataPoint)
+        if (_consumedWithBuying.length > ENV_VARS.CONSTANTS.MAX_SIZE) {
+            _consumedWithBuying.shift()
+        }
+    },
+    getConsumedWithBuyingDataPoint() {
+        return _consumedWithBuying
     }
 });
 
 AppDispatcher.register(function(action) {
+    console.log(action)
     switch(action.actionType) {
         case GraphConstants.ADD_POINT:
-            GraphStore.addDataPoint(action.dataPoint)
+            GraphStore.addLabel(action.label)
+            GraphStore.addProducedDataPoint(action.produced)
+            GraphStore.addConsumedNoBuyingDataPoint(action.consumedNoBuying)
+            GraphStore.addConsumedWithBuyingDataPoint(action.consumedWithBuying)
             GraphStore.emitChange()
             break
         default:
