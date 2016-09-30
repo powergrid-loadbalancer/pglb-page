@@ -3,8 +3,8 @@ import EntryStore from "../stores/entryStore"
 import ENV_VARS from "../../tools/ENV_VARS"
 
 export var updateGraph = function() {
-    let produced = 0
-    let consumersNoBuying = 0
+    let produced = 0.0
+    let consumersNoBuying = 0.0
     EntryStore.getEntries().forEach(entry => {
         if (entry.type === ENV_VARS.CONSTANTS.CONSUMER) {
             consumersNoBuying += entry.normalValue
@@ -13,8 +13,13 @@ export var updateGraph = function() {
         }
     })
 
-    let consumersWithBuying = 0
-    EntryStore.getEntryStates().forEach(state => consumersWithBuying += state.value)
+    let consumersWithBuying = 0.0
+    let counter = 0
+    EntryStore.getEntryStates().forEach(state => {
+        if (counter < ENV_VARS.CONSTANTS.MAX_SIZE - 1) {
+            consumersWithBuying += state.value
+        }
+    })
 
     console.log(produced, consumersNoBuying, consumersWithBuying)
 

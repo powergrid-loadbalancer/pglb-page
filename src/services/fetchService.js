@@ -57,6 +57,21 @@ export function fetchEntries () {
                             return array
                         }, new Array())
 
+                    for (let i = entries.length; i < (ENV_VARS.CONSTANTS.MAX_SIZE - 1); i++) {
+                        let checked = false
+
+                        if (entryStates.length >= (ENV_VARS.CONSTANTS.MAX_SIZE)) {
+                            checked = entryStates[groupId].checked
+                        }
+                        entries[i] = {
+                            type: entries[i % entries.length].type,
+                            meterId: i,
+                            normalValue: entries[i % entries.length].normalValue,
+                            buyingValue: entries[i % entries.length].buyingValue,
+                            checked: checked
+                        }
+                    }
+
                     var producer = jsonArray.find(meter => meter.Meter === null);
 
                     let checked = false
@@ -68,8 +83,8 @@ export function fetchEntries () {
                     entries[ENV_VARS.CONSTANTS.MAX_SIZE - 1] = {
                         type: "PRODUCER",
                         meterId: ENV_VARS.CONSTANTS.MAX_SIZE - 1,
-                        normalValue: parseFloat(producer.normalValue),
-                        buyingValue: parseFloat(producer.buyingValue),
+                        normalValue: parseFloat(producer.normalValue) / 2000.0,
+                        buyingValue: parseFloat(producer.buyingValue) / 2000.0,
                         checked: checked
                     }
 
