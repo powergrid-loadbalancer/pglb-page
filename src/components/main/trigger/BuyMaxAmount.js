@@ -46,12 +46,11 @@ export default class BuyTrigger extends React.Component {
 
     _handleKeyPress = e => {
         if(e.key === 'Enter') {
-            fetch(ENV_VARS.SERVER_URL + "/head", {
-                method: "POST",
+            fetch(ENV_VARS.SERVER_URL + "/capacity?value=" + this.state.maxBuyText, {
+                method: "GET",
                 headers: {
                     'Accept': 'application/json'
-                },
-                body: JSON.stringify(this.state.maxBuyText)
+                }
             })
             .then(response => {
                 if (response.status === 200) {
