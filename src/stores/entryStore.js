@@ -5,13 +5,41 @@ import assign from 'object-assign'
 
 // Current settings
 var _entries = []
+var _entryState = []
 
 var EntryStore = assign({}, BaseStore, {
     setEntries(entries) {
         _entries = entries
+
+        _entryState = _entries.map(entry => {
+
+            let value
+            if (entry.checked) {
+                value = entry.buyingValue
+            } else {
+                value = entry.normalValue
+            }
+
+            return {
+                checked: entry.checked,
+                value: value
+            }
+        })
     },
     getEntries() {
         return _entries
+    },
+    updateEntryState(index, checked, value) {
+        console.log(index, checked, value)
+      _entryState[index] = {
+          checked: checked,
+          value: value
+      }
+
+      console.log(_entryState)
+    },
+    getEntryStates() {
+        return _entryState
     }
 });
 

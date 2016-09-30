@@ -7,12 +7,10 @@ export default class TableEntry extends React.Component {
         super(props)
 
         this.state = {
-            id: this.props.id,
             type: this.props.type,
             meterId: this.props.meterId,
             normalValue: this.props.normalValue,
             buyingValue: this.props.buyingValue,
-            currentValue: this.props.normalValue
         }
     }
 

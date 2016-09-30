@@ -7,10 +7,3 @@ export var addEntries = function(entries) {
         entries: entries
     })
 }
-
-export var entryToggled = function(jsonData) {
-    AppDispatcher.dispatch({
-        actionType: EntryConstants.TOGGLE_ENTRY,
-        entry: jsonData
-    })
-}
