@@ -1,3 +1,3 @@
 export default {
-    ADD_ENTRY: "ADD_ENTRY"
+    SET_ENTRY: "SET_ENTRY"
 }

@@ -1,37 +1,27 @@
-import { addEntries } from "../actions/entryAction"
+import { setEntries } from "../actions/entryAction"
+import EntriesStore from "../stores/entryStore"
 
-export function fetchEntry () {
-    let entries = [{
+export function fetchEntries () {
+    let entries = []
+    let entryStates = EntriesStore.getEntryStates()
+    for (let i = 0; i < 5; i++) {
+        let checked = false
+
+        if (entryStates.length >= 5) {
+            checked = entryStates[i].checked
+        }
+
+        let j = Math.random() * 10
+        let entry = {
             type: "PRODUCER",
-            meterId: 1,
+            meterId: j,
             normalValue: "5000",
             buyingValue: "2500",
-            checked: false
-        }, {
-            type: "CONSUMER",
-            meterId: 2,
-            normalValue: "500",
-            buyingValue: "250",
-            checked: false
-    }, {
-            type: "CONSUMER",
-            meterId: 3,
-            normalValue: "500",
-            buyingValue: "250",
-            checked: false
-    }, {
-            type: "CONSUMER",
-            meterId: 4,
-            normalValue: "500",
-            buyingValue: "250",
-            checked: false
-    }, {
-            type: "CONSUMER",
-            meterId: 5,
-            normalValue: "500",
-            buyingValue: "250",
-            checked: false
-    }]
+            checked: checked
+        }
 
-    addEntries(entries)
+        entries.push(entry)
+    }
+
+    setEntries(entries)
 }

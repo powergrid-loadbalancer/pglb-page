@@ -30,13 +30,10 @@ var EntryStore = assign({}, BaseStore, {
         return _entries
     },
     updateEntryState(index, checked, value) {
-        console.log(index, checked, value)
-      _entryState[index] = {
+        _entryState[index] = {
           checked: checked,
           value: value
-      }
-
-      console.log(_entryState)
+        }
     },
     getEntryStates() {
         return _entryState
@@ -45,7 +42,7 @@ var EntryStore = assign({}, BaseStore, {
 
 AppDispatcher.register(function(action) {
     switch(action.actionType) {
-        case EntryConstants.ADD_ENTRY:
+        case EntryConstants.SET_ENTRY:
             EntryStore.setEntries(action.entries)
             EntryStore.emitChange()
             break

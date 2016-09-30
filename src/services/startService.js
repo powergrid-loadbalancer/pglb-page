@@ -1,11 +1,13 @@
-import { fetchEntry } from "./fetchService"
+import { fetchEntries } from "./fetchService"
 
 export function start() {
-    fetchEntry()
-    (function startCallback() {
-        setTimeout(function () {
-            fetchEntry()
-            startCallback()
-        }, 3000)
-    })()
+    fetchEntries()
+    _startCallback()
+}
+
+let _startCallback = () => {
+    setTimeout(() => {
+        fetchEntries()
+        _startCallback()
+    }, 3000)
 }

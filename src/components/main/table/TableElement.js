@@ -25,7 +25,6 @@ export default class TableElement extends React.Component {
     }
 
     _updateEntries = () => {
-        console.log("got here")
         let entriesList = Immutable.List(EntryStore.getEntries())
         entriesList = entriesList.map(entry => <TableRow selected={entry.checked}>
                                     <TableEntry
@@ -36,6 +35,10 @@ export default class TableElement extends React.Component {
                                         checked={entry.checked}
                                     />
                                 </TableRow>)
+
+        this.setState({
+            entries: []
+        })
 
         this.setState({
             entries: entriesList
@@ -75,12 +78,12 @@ export default class TableElement extends React.Component {
                             enableSelectAll={true}
                         >
                             <TableRow>
-                                <TableHeaderColumn>Meter</TableHeaderColumn>
+                                <TableHeaderColumn>Meter ID</TableHeaderColumn>
                             </TableRow>
                         </TableHeader>
                         <TableBody
                             displayRowCheckbox={true}
-                            deselectOnClickaway={true}
+                            deselectOnClickaway={false}
                             showRowHover={true}
                             stripedRows={false}
                         >
