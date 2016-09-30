@@ -6,8 +6,27 @@ export default class Chart extends React.Component {
     constructor(props) {
         super(props)
 
+        this.options = {
+            animation : false,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        labelString: "Time (minutes)",
+                        display: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        labelString: "kWh",
+                        display: true
+                    }
+                }]
+            }
+        }
+
         const data = {
-            labels: [1,2,3,4,5,6,7,8,9],
+            labels: ["TIME", "TIME + 00:15", "TIME + 00:30", "TIME + 00:45", "TIME + 01:00", "TIME + 01:15", "TIME + 01:30", "TIME + 01:45", "TIME + 02:00", "TIME + 02:15"],
             datasets: [{
                 label: 'Produced',
                 fill: false,
@@ -60,7 +79,7 @@ export default class Chart extends React.Component {
         };
 
         this.state = {
-            graph: <Line data={data} width={700} height={400}/>
+            graph: <Line data={data} options={this.options} width={700} height={400}/>
         }
     }
 
@@ -75,7 +94,7 @@ export default class Chart extends React.Component {
     _updateGraph = () => {
 
         const data = {
-            labels: [1,2,3,4,5,6,7,8,9],
+            labels: ["TIME", "TIME + 00:15", "TIME + 00:30", "TIME + 00:45", "TIME + 01:00", "TIME + 01:15", "TIME + 01:30", "TIME + 01:45", "TIME + 02:00", "TIME + 02:15"],
             datasets: [{
                 label: 'Produced',
                 fill: false,
@@ -129,7 +148,21 @@ export default class Chart extends React.Component {
 
         let options = {
             animation : false,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        labelString: "Test X",
+                        display: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        labelString: "Test X",
+                        display: true
+                    }
+                }]
+            }
         }
 
         this.setState({
@@ -138,7 +171,7 @@ export default class Chart extends React.Component {
 
         console.log(GraphStore.getProducedDataPoint())
         this.setState({
-            graph: <Line data={data} options={options} width={700} height={400}/>
+            graph: <Line data={data} options={this.options} width={700} height={400}/>
         })
     }
 
