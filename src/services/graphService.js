@@ -14,7 +14,13 @@ export var updateGraph = function() {
     })
 
     let consumersWithBuying = 0
-    let entryState = EntryStore.getEntryStates().forEach(state => consumersWithBuying += state.value)
+    EntryStore.getEntryStates().forEach(state => {
+        if (state.checked) {
+            consumersWithBuying += state.value
+        }
+    })
 
-    addDataPointAction("d", produced, consumersNoBuying, entryState)
+    console.log(produced, consumersNoBuying, consumersWithBuying)
+
+    addDataPointAction("d", produced, consumersNoBuying, consumersWithBuying)
 }

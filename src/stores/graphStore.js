@@ -50,7 +50,6 @@ var GraphStore = assign({}, BaseStore, {
 });
 
 AppDispatcher.register(function(action) {
-    console.log(action)
     switch(action.actionType) {
         case GraphConstants.ADD_POINT:
             GraphStore.addLabel(action.label)
