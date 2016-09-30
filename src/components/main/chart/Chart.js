@@ -96,7 +96,7 @@ export default class Chart extends React.Component {
         const data = {
             labels: ["TIME", "TIME + 00:15", "TIME + 00:30", "TIME + 00:45", "TIME + 01:00", "TIME + 01:15", "TIME + 01:30", "TIME + 01:45", "TIME + 02:00", "TIME + 02:15"],
             datasets: [{
-                label: 'Produced',
+                label: 'Produced [2000 kWh]',
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(46, 125, 50, 0.4)',
@@ -112,7 +112,7 @@ export default class Chart extends React.Component {
                 pointHitRadius: 10,
                 data: GraphStore.getProducedDataPoint()
             }, {
-                label: 'Consumed without SmartDevices',
+                label: 'Consumed w/o SmartDevices',
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(198,40,40,0.4)',
@@ -128,7 +128,7 @@ export default class Chart extends React.Component {
                 pointHitRadius: 10,
                 data: GraphStore.getConsumedNoBuyingDataPoint()
             }, {
-                label: 'Consumed with SmartDevices',
+                label: 'Consumed w/ SmartDevices',
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(2, 119, 189, 0.4)',
@@ -145,25 +145,6 @@ export default class Chart extends React.Component {
                 data: GraphStore.getConsumedWithBuyingDataPoint()
             }]
         };
-
-        let options = {
-            animation : false,
-            maintainAspectRatio: false,
-            scales: {
-                xAxes: [{
-                    scaleLabel: {
-                        labelString: "Test X",
-                        display: true
-                    }
-                }],
-                yAxes: [{
-                    scaleLabel: {
-                        labelString: "Test X",
-                        display: true
-                    }
-                }]
-            }
-        }
 
         this.setState({
             graph: <div></div>
