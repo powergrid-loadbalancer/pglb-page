@@ -5,7 +5,7 @@ import assign from 'object-assign'
 import ENV_VARS from "../../tools/ENV_VARS"
 
 // Current settings
-_dataPoints = []
+let _dataPoints = []
 
 var GraphStore = assign({}, BaseStore, {
     addDataPoint(dataPoint) {
