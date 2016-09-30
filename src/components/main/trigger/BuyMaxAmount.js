@@ -16,9 +16,9 @@ export default class BuyTrigger extends React.Component {
         .then(response => {
             if (response.status === 200) {
                 response.json().then(jsonArray => {
-                    this.state = {
+                    this.setState({
                         maxBuyText: jsonArray
-                    }
+                    })
                 })
             } else {
                 response.json().then(jsonArray => {
@@ -56,7 +56,7 @@ export default class BuyTrigger extends React.Component {
             .then(response => {
                 if (response.status === 200) {
                     response.json().then(jsonArray => {
-
+                        console.log("Success")
                     })
                 } else {
                     response.json().then(jsonArray => {
