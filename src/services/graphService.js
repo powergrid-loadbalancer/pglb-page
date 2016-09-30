@@ -13,11 +13,16 @@ export var updateGraph = function() {
         }
     })
 
+    let index = 0
     let consumersWithBuying = 0
     EntryStore.getEntryStates().forEach(state => {
         if (state.checked) {
             consumersWithBuying += state.value
+        } else {
+            consumersWithBuying += EntryStore.getEntries()[index].normalValue
         }
+
+        index++
     })
 
     console.log(produced, consumersNoBuying, consumersWithBuying)
