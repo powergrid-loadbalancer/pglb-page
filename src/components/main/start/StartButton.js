@@ -1,5 +1,6 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton';
+import { start } from "../../../services/startService"
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -15,6 +16,10 @@ export default class Home extends React.Component {
     componentWillUnmount() {
     }
 
+    _handleClick =() => {
+        start()
+    }
+
     render () {
         const style = {
             margin: 12,
@@ -22,7 +27,12 @@ export default class Home extends React.Component {
 
         return (
             <div className="start-button">
-                <RaisedButton label="Start" primary={true} style={style} />
+                <RaisedButton
+                    label="Start"
+                    primary={true}
+                    style={style}
+                    onTouchTap={this._handleClick.bind(this)}
+                />
             </div>
         )
     }

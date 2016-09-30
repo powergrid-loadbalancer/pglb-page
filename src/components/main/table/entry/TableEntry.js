@@ -7,6 +7,7 @@ export default class TableEntry extends React.Component {
         super(props)
 
         this.state = {
+            id: this.props.id,
             type: this.props.type,
             meterId: this.props.meterId,
             normalValue: this.props.normalValue,
@@ -35,7 +36,10 @@ export default class TableEntry extends React.Component {
         }
 
         return (
-            <TableRowColumn style={style}>{this.state.meterId}</TableRowColumn>
+            <TableRowColumn
+                style={style}>
+                {this.state.meterId}
+            </TableRowColumn>
         )
     }
 }
